@@ -1,0 +1,13 @@
+{
+    "Servers": {
+        "test": {
+            "Name": "emails",
+            "Group": "Servers",
+            "Port": 5432,
+            "MaintenanceDB": "emails",
+            "Username": "emailsUser",
+            "Host": "postgresql",
+            "SSLMode": "prefer"
+        }
+    }
+}

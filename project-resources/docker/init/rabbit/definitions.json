@@ -1,0 +1,37 @@
+{
+	"users": [
+		{
+			"name": "emailsUser",
+			"password": "emailsUserPass",
+			"tags": ["administrator","management"]
+		}
+	],
+	"vhosts": [
+		{
+			"name": "emails"
+		}
+	],
+	"permissions": [
+		{
+			"user": "emailsUser",
+			"vhost": "emails",
+			"configure": ".*",
+			"write": ".*",
+			"read": ".*"
+		}
+	],
+	"queues": [
+		{
+			"name": "emails_queue",
+			"vhost": "emails",
+			"durable": true,
+			"auto_delete": false,
+			"arguments": {
+				"x-queue-type": "classic",
+				"x-queue-mode": "lazy",
+				"x-queue-version": 2,
+				"x-overflow": "reject-publish"
+			}
+		}
+	]
+}

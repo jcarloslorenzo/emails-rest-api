@@ -1,0 +1,143 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+  <property name="now" value="now()" dbms="postgresql"/>
+    <changeSet author="jclorenzo" id="1.0.0.20230522.2">
+    	<insert schemaName="public" tableName="email">  
+			<column name="sender" value="carl@gbtec.es"/>
+			<column name="subject" value="This is not a spam email!!"/>
+			<column name="body" value="Hello! I am a nigerian prince... "/>
+			<column name="state" value="4"/>
+			<column name="creation_date" value="${now}"/>			
+		</insert>		
+		<insert schemaName="public" tableName="email_recipient_to">  
+			<column  name="id"  value="1"/>    
+			<column  name="email_id" valueComputed="(select max(id) from public.email)"/>
+			<column  name="address"  value="pepe@mail.com"/>    
+		</insert>		
+		<insert schemaName="public" tableName="email_recipient_cc">  
+			<column  name="id"  value="1"/>    
+			<column  name="email_id" valueComputed="(select max(id) from public.email)"/>
+			<column  name="address"  value="marcus154@mail.com"/>    
+		</insert>
+		<insert schemaName="public" tableName="email_recipient_bcc">  
+			<column  name="id"  value="1"/>    
+			<column  name="email_id" valueComputed="(select max(id) from public.email)"/>
+			<column  name="address"  value="boss@mail.com"/>    
+		</insert>
+		
+		<insert schemaName="public" tableName="email">  
+			<column name="sender" value="alfred@mail.com"/>
+			<column name="subject" value="Summary of the meeting "/>
+			<column name="body" value="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam consequat tristique semper. Vestibulum vulputate mauris ante, ut cursus tellus eleifend et. Phasellus id eros sollicitudin, volutpat odio nec, aliquam urna. Fusce nec posuere erat, ac finibus magna. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce auctor ultrices volutpat. Fusce vulputate elit a condimentum luctus. Vestibulum at nisi tellus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Proin nec leo in ante consequat maximus. Praesent ultrices turpis sit amet pharetra pulvinar. In pulvinar mauris vel posuere malesuada. Suspendisse et rutrum odio, id rutrum quam. Vestibulum leo urna, tristique eu libero ut, condimentum scelerisque erat. Ut vitae mattis est."/>
+			<column name="state" value="1"/>
+			<column name="creation_date" value="${now}"/>			
+		</insert>		
+		<insert schemaName="public" tableName="email_recipient_to">  
+			<column  name="id"  value="1"/>    
+			<column  name="email_id" valueComputed="(select max(id) from public.email)"/>
+			<column  name="address"  value="worker01@mail.com"/>    
+		</insert>
+		<insert schemaName="public" tableName="email_recipient_to">  
+			<column  name="id"  value="2"/>    
+			<column  name="email_id" valueComputed="(select max(id) from public.email)"/>
+			<column  name="address"  value="worker02@mail.com"/>    
+		</insert>		
+		<insert schemaName="public" tableName="email_recipient_cc">  
+			<column  name="id"  value="1"/>    
+			<column  name="email_id" valueComputed="(select max(id) from public.email)"/>
+			<column  name="address"  value="boss@mail.com"/>  	   
+		</insert>
+		
+		<insert schemaName="public" tableName="email">  
+			<column name="sender" value="boss@mail.com"/>
+			<column name="subject" value="Happy new Year 2019!!"/>
+			<column name="body" value="Happy New Year 2019 to all!"/>
+			<column name="state" value="1"/>
+			<column name="creation_date" value="2019-01-01"/>			
+		</insert>		
+		<insert schemaName="public" tableName="email_recipient_to">  
+			<column  name="id"  value="1"/>    
+			<column  name="email_id" valueComputed="(select max(id) from public.email)"/>
+			<column  name="address"  value="worker01@mail.com"/>    
+		</insert>
+		<insert schemaName="public" tableName="email_recipient_to">  
+			<column  name="id"  value="2"/>    
+			<column  name="email_id" valueComputed="(select max(id) from public.email)"/>
+			<column  name="address"  value="worker02@mail.com"/>    
+		</insert>	
+		<insert schemaName="public" tableName="email_recipient_to">  
+			<column  name="id"  value="3"/>    
+			<column  name="email_id" valueComputed="(select max(id) from public.email)"/>
+			<column  name="address"  value="worker03@mail.com"/>    
+		</insert>		
+		<insert schemaName="public" tableName="email_recipient_cc">  
+			<column  name="id"  value="1"/>    
+			<column  name="email_id" valueComputed="(select max(id) from public.email)"/>
+			<column  name="address"  value="carl@gbtec.es"/>  	   
+		</insert>
+		<insert schemaName="public" tableName="email_recipient_bcc">  
+			<column  name="id"  value="1"/>    
+			<column  name="email_id" valueComputed="(select max(id) from public.email)"/>
+			<column  name="address"  value="pepe@mail.com"/>  	   
+		</insert>
+		
+		<insert schemaName="public" tableName="email">  
+			<column name="sender" value="carl@gbtec.es"/>
+			<column name="subject" value="Re: Happy new Year 2019!!"/>
+			<column name="body" value="Happy new year 2019 to you too, dear boss!!"/>
+			<column name="state" value="1"/>
+			<column name="creation_date" value="2019-01-02"/>			
+		</insert>		
+		<insert schemaName="public" tableName="email_recipient_to">  
+			<column  name="id"  value="1"/>    
+			<column  name="email_id" valueComputed="(select max(id) from public.email)"/>
+			<column  name="address"  value="boss@mail.com"/>  	   
+		</insert>
+		<insert schemaName="public" tableName="email_recipient_cc">  
+			<column  name="id"  value="1"/>    
+			<column  name="email_id" valueComputed="(select max(id) from public.email)"/>
+			<column  name="address"  value="worker01@mail.com"/>    
+		</insert>
+		<insert schemaName="public" tableName="email_recipient_cc">  
+			<column  name="id"  value="2"/>    
+			<column  name="email_id" valueComputed="(select max(id) from public.email)"/>
+			<column  name="address"  value="worker02@mail.com"/>    
+		</insert>	
+		<insert schemaName="public" tableName="email_recipient_cc">  
+			<column  name="id"  value="3"/>    
+			<column  name="email_id" valueComputed="(select max(id) from public.email)"/>
+			<column  name="address"  value="worker03@mail.com"/>    
+		</insert>		
+		<insert schemaName="public" tableName="email_recipient_cc">  
+			<column  name="id"  value="4"/>    
+			<column  name="email_id" valueComputed="(select max(id) from public.email)"/>
+			<column  name="address"  value="carl@gbtec.es"/>  	   
+		</insert>
+		
+		<insert schemaName="public" tableName="email">  
+			<column name="sender" value="boss@mail.com"/>
+			<column name="subject" value="What about mine??"/>
+			<column name="body" value="Nulla augue nulla, commodo at ornare quis, laoreet sed mauris. Nulla et consequat velit. Quisque varius lectus a interdum venenatis. Praesent faucibus libero ligula, eu pellentesque ante imperdiet eu. Mauris consequat metus a nisl volutpat finibus."/>
+			<column name="state" value="3"/>
+			<column name="creation_date" value="2023-04-22"/>			
+		</insert>		
+		<insert schemaName="public" tableName="email_recipient_to">  
+			<column  name="id"  value="1"/>    
+			<column  name="email_id" valueComputed="(select max(id) from public.email)"/>
+			<column  name="address"  value="pepe@mail.com"/>  	   
+		</insert>
+		
+		<insert schemaName="public" tableName="email">  
+			<column name="sender" value="boss@mail.com"/>
+			<column name="subject" value="Vivamus vulputate"/>
+			<column name="body" value="Praesent sit amet lacus id ligula sagittis vulputate. Mauris hendrerit metus quis facilisis dapibus. In dapibus nunc mattis, tempor nisi et, dapibus leo.."/>
+			<column name="state" value="2"/>
+			<column name="creation_date" value="2023-05-20"/>			
+		</insert>		
+		<insert schemaName="public" tableName="email_recipient_to">  
+			<column  name="id"  value="1"/>    
+			<column  name="email_id" valueComputed="(select max(id) from public.email)"/>
+			<column  name="address"  value="pepe@mail.com"/>  	   
+		</insert>
+    </changeSet>
+</databaseChangeLog>

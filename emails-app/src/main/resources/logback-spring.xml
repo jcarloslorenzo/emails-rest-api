@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xml>
+<configuration>
+
+
+	<appender name="DEFAULT_ADAPTER" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+			<pattern>%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n</pattern>
+		</encoder>
+	</appender>
+
+	<springProfile name="local">
+		<root level="INFO">
+			<appender-ref ref="DEFAULT_ADAPTER" />
+		</root>
+		<logger name="com.gbtech" level="DEBUG" />
+		<logger name="org.hibernate.SQL" level="DEBUG" />
+		<logger name="org.hibernate.type.descriptor.sql.BasicBinder" level="TRACE" />
+	</springProfile>
+
+	<springProfile name="docker">
+		<root level="WARN">
+			<appender-ref ref="DEFAULT_ADAPTER" />
+		</root>
+		<logger name="com.gbtech" level="INFO" />
+	</springProfile>
+	
+</configuration>

@@ -1,0 +1,72 @@
+version: '3.9'
+services:
+ emailsapi:
+  container_name: emailsapi
+  build:
+   context: ../../emails-app/target/
+   dockerfile: ../../project-resources/docker/Dockerfile
+  image: emailapi-server:latest
+  depends_on:
+   - postgresql
+   - pgadmin
+   - rabbitmq
+  ports:
+   - 8080:8080
+  volumes:
+   - emailsapi_volume:/opt/emails/logs
+  networks:
+   - emails_network
+  
+ postgresql:
+  container_name: postgresql
+  image: 'postgres:latest'
+  ports: 
+   - 5432:5432
+  environment:
+   POSTGRES_USER: emailsUser 
+   POSTGRES_PASSWORD: emailsUserPass 
+   POSTGRES_DB: emails 
+  volumes:
+   - postgresql_data:/var/lib/postgresql/data
+  networks:
+   - emails_network
+   
+ pgadmin:
+  container_name: pgadmin
+  image: dpage/pgadmin4
+  depends_on:
+   - postgresql
+  ports:
+   - "5050:80"
+  environment:
+   PGADMIN_DEFAULT_EMAIL: emailsUser@nomail.com
+   PGADMIN_DEFAULT_PASSWORD: emailsUserPass
+  volumes:
+   - pgadmin_data:/var/lib/pgadmin
+   - ./init/pgadmin/servers.json:/pgadmin4/servers.json:ro
+  networks:
+   - emails_network
+   
+ rabbitmq:
+    container_name: rabbitmq
+    image: rabbitmq:3-management-alpine
+    ports:
+        - 5672:5672
+        - 15672:15672
+    volumes:
+        - rabbitmq_data:/var/lib/rabbitmq/
+        - rabbitmq_log:/var/log/rabbitmq
+        - ./init/rabbit/rabbitmq.conf:/etc/rabbitmq/rabbitmq.conf:ro
+        - ./init/rabbit/definitions.json:/etc/rabbitmq/definitions.json:ro
+    networks:
+        - emails_network
+volumes:
+ emailsapi_volume:
+ postgresql_data:
+ pgadmin_data:
+ rabbitmq_data:
+ rabbitmq_log:
+    
+networks:
+ emails_network:
+  driver: bridge

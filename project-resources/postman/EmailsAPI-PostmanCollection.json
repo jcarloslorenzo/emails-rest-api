@@ -1,0 +1,1078 @@
+{
+	"info": {
+		"_postman_id": "72b00ba1-c132-436c-985f-d7957abee7bd",
+		"name": "Emails API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "10568568"
+	},
+	"item": [
+		{
+			"name": "v1",
+			"item": [
+				{
+					"name": "emails",
+					"item": [
+						{
+							"name": "{id}",
+							"item": [
+								{
+									"name": "Get email by id",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/v1/emails/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"v1",
+												"emails",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "<integer>"
+												}
+											]
+										},
+										"description": "Retrieves an email by id."
+									},
+									"response": [
+										{
+											"name": "Email found.",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/v1/emails/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"v1",
+														"emails",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "2"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"emailId\": \"<integer>\",\n  \"emailFrom\": \"<string>\",\n  \"emailSubject\": \"<string>\",\n  \"emailTo\": [\n    {\n      \"email\": \"<string>\"\n    },\n    {\n      \"email\": \"<string>\"\n    }\n  ],\n  \"emailCC\": [\n    {\n      \"email\": \"<string>\"\n    },\n    {\n      \"email\": \"<string>\"\n    }\n  ],\n  \"emailBCC\": [\n    {\n      \"email\": \"<string>\"\n    },\n    {\n      \"email\": \"<string>\"\n    }\n  ],\n  \"emailBody\": \"<string>\",\n  \"emailState\": \"<integer>\"\n}"
+										},
+										{
+											"name": "Email not found.",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/v1/emails/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"v1",
+														"emails",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "999"
+														}
+													]
+												}
+											},
+											"status": "Not Found",
+											"code": 404,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"timestamp\": \"<dateTime>\"\n}"
+										}
+									]
+								},
+								{
+									"name": "Updates an email.",
+									"request": {
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"emailId\": \"<integer>\",\n  \"emailFrom\": \"<string>\",\n  \"emailSubject\": \"<string>\",\n  \"emailTo\": [\n    {\n      \"email\": \"<string>\"\n    },\n    {\n      \"email\": \"<string>\"\n    }\n  ],\n  \"emailCC\": [\n    {\n      \"email\": \"<string>\"\n    },\n    {\n      \"email\": \"<string>\"\n    }\n  ],\n  \"emailBCC\": [\n    {\n      \"email\": \"<string>\"\n    },\n    {\n      \"email\": \"<string>\"\n    }\n  ],\n  \"emailBody\": \"<string>\",\n  \"emailState\": \"<integer>\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/v1/emails/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"v1",
+												"emails",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "<integer>"
+												}
+											]
+										},
+										"description": "Updates the received email.<br>Only existing emails on state 2 (Draft) could be updated"
+									},
+									"response": [
+										{
+											"name": "Email updated successfully.",
+											"originalRequest": {
+												"method": "PATCH",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"emailId\": 6,\n    \"emailFrom\": \"boss@mail.com\",\n    \"emailSubject\": \"Vivamus vulputate\",\n    \"emailTo\": [\n        {\n            \"email\": \"pepe@mail.com\"\n        }\n    ],\n    \"emailCC\": [\n        {\n            \"email\": \"mike@mail.com\"\n        }\n    ],\n    \"emailBCC\": [],\n    \"emailBody\": \"Praesent sit amet lacus id ligula sagittis vulputate. Mauris hendrerit metus quis facilisis dapibus. In dapibus nunc mattis, tempor nisi et, dapibus leo..\",\n    \"emailState\": 2\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/v1/emails/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"v1",
+														"emails",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "6"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"emailId\": \"<integer>\",\n  \"emailFrom\": \"<string>\",\n  \"emailSubject\": \"<string>\",\n  \"emailTo\": [\n    {\n      \"email\": \"<string>\"\n    },\n    {\n      \"email\": \"<string>\"\n    }\n  ],\n  \"emailCC\": [\n    {\n      \"email\": \"<string>\"\n    },\n    {\n      \"email\": \"<string>\"\n    }\n  ],\n  \"emailBCC\": [\n    {\n      \"email\": \"<string>\"\n    },\n    {\n      \"email\": \"<string>\"\n    }\n  ],\n  \"emailBody\": \"<string>\",\n  \"emailState\": \"<integer>\"\n}"
+										},
+										{
+											"name": "Wrong or illegal email content.",
+											"originalRequest": {
+												"method": "PATCH",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"emailId\": 1,\n  \"emailFrom\": \"carl@gbtec.es\",\n  \"emailSubject\": \"This is not a spam email!!\",\n  \"emailTo\": [\n    {\n      \"email\": \"pepe@mail.com\"\n    }\n  ],\n  \"emailCC\": [\n    {\n      \"email\": \"marcus154@mail.com\"\n    }\n  ],\n  \"emailBCC\": [\n    {\n      \"email\": \"boss@mail.com\"\n    }\n  ],\n  \"emailBody\": \"Hello! I am a nigerian prince... \",\n  \"emailState\": 4\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/v1/emails/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"v1",
+														"emails",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "2"
+														}
+													]
+												}
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"timestamp\": \"<dateTime>\"\n}"
+										},
+										{
+											"name": "Email not found.",
+											"originalRequest": {
+												"method": "PATCH",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"emailId\": 99,\n  \"emailFrom\": \"carl@gbtec.es\",\n  \"emailSubject\": \"Vestibulum egestas laoreet hendrerit\",\n  \"emailTo\": [\n    {\n      \"email\": \"pepe@mail.com\"\n    }\n  ],\n  \"emailBody\": \"Nunc ullamcorper nibh in fermentum eleifend. Ut iaculis magna a neque pulvinar, at pellentesque lorem dignissim.\",\n  \"emailState\": 2\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/v1/emails/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"v1",
+														"emails",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "99"
+														}
+													]
+												}
+											},
+											"status": "Not Found",
+											"code": 404,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"timestamp\": \"<dateTime>\"\n}"
+										},
+										{
+											"name": "Incorrect email state.",
+											"originalRequest": {
+												"method": "PATCH",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"emailId\": 1,\n  \"emailFrom\": \"carl@gbtec.es\",\n  \"emailSubject\": \"This is not a spam email!!\",\n  \"emailTo\": [\n    {\n      \"email\": \"pepe@mail.com\"\n    }\n  ],\n  \"emailCC\": [\n    {\n      \"email\": \"marcus154@mail.com\"\n    }\n  ],\n  \"emailBCC\": [\n    {\n      \"email\": \"boss@mail.com\"\n    }\n  ],\n  \"emailBody\": \"Hello! I am a nigerian prince... \",\n  \"emailState\": 4\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/v1/emails/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"v1",
+														"emails",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "1"
+														}
+													]
+												}
+											},
+											"status": "Conflict",
+											"code": 409,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"timestamp\": \"<dateTime>\"\n}"
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "{ids}",
+							"item": [
+								{
+									"name": "Delete emails",
+									"request": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/v1/emails/:ids",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"v1",
+												"emails",
+												":ids"
+											],
+											"variable": [
+												{
+													"key": "ids",
+													"value": "<integer>,<integer>"
+												}
+											]
+										},
+										"description": "Delete the received list of emails."
+									},
+									"response": [
+										{
+											"name": "Emails successfully deleted.",
+											"originalRequest": {
+												"method": "DELETE",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/v1/emails/:ids",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"v1",
+														"emails",
+														":ids"
+													],
+													"variable": [
+														{
+															"key": "ids",
+															"value": "3,4"
+														}
+													]
+												}
+											},
+											"status": "Created",
+											"code": 201,
+											"_postman_previewlanguage": "text",
+											"header": [],
+											"cookie": [],
+											"body": ""
+										},
+										{
+											"name": "Email cannot be deleted.",
+											"originalRequest": {
+												"method": "DELETE",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/v1/emails/:ids",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"v1",
+														"emails",
+														":ids"
+													],
+													"variable": [
+														{
+															"key": "ids",
+															"value": "5"
+														}
+													]
+												}
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"timestamp\": \"<dateTime>\"\n}"
+										},
+										{
+											"name": "Email not found.",
+											"originalRequest": {
+												"method": "DELETE",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/v1/emails/:ids",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"v1",
+														"emails",
+														":ids"
+													],
+													"variable": [
+														{
+															"key": "ids",
+															"value": "0"
+														}
+													]
+												}
+											},
+											"status": "Not Found",
+											"code": 404,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"timestamp\": \"<dateTime>\"\n}"
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "search",
+							"item": [
+								{
+									"name": "Search emails",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"creationDateFrom\": \"<dateTime>\",\n  \"creationDateTo\": \"<dateTime>\",\n  \"sender\": \"<string>\",\n  \"allowSenderPartialMatch\": \"<boolean>\",\n  \"states\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/v1/emails/search",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"v1",
+												"emails",
+												"search"
+											]
+										},
+										"description": "Search for emails that meet the requirements defined by the filter."
+									},
+									"response": [
+										{
+											"name": "Search successful.",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"creationDateFrom\": \"2019-01-01\",\n  \"sender\": \"gbtec\",\n  \"allowSenderPartialMatch\": \"true\",\n  \"states\": [4]\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/v1/emails/search",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"v1",
+														"emails",
+														"search"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "[\n  {\n    \"emailId\": \"<integer>\",\n    \"emailFrom\": \"<string>\",\n    \"emailSubject\": \"<string>\",\n    \"emailTo\": [\n      {\n        \"email\": \"<string>\"\n      },\n      {\n        \"email\": \"<string>\"\n      }\n    ],\n    \"emailCC\": [\n      {\n        \"email\": \"<string>\"\n      },\n      {\n        \"email\": \"<string>\"\n      }\n    ],\n    \"emailBCC\": [\n      {\n        \"email\": \"<string>\"\n      },\n      {\n        \"email\": \"<string>\"\n      }\n    ],\n    \"emailBody\": \"<string>\",\n    \"emailState\": \"<integer>\"\n  }\n]"
+										},
+										{
+											"name": "No results found.",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"creationDateFrom\": \"2022-06-01\",\n  \"creationDateTo\": \"2022-08-02\",\n  \"sender\": \"pepe@mail.com\",\n  \"allowSenderPartialMatch\": \"false\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/v1/emails/search",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"v1",
+														"emails",
+														"search"
+													]
+												}
+											},
+											"status": "No Content",
+											"code": 204,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "<array>"
+										},
+										{
+											"name": "By sender with partial match",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"sender\": \"gbtec.es\",\n  \"allowSenderPartialMatch\": \"true\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/v1/emails/search",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"v1",
+														"emails",
+														"search"
+													]
+												}
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "[\n  {\n    \"code\": \"<integer>\",\n    \"message\": \"<string>\",\n    \"timestamp\": \"<dateTime>\"\n  }\n]"
+										},
+										{
+											"name": "By sender with full match",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"sender\": \"boss@mail.com\",\n  \"allowSenderPartialMatch\": \"false\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/v1/emails/search",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"v1",
+														"emails",
+														"search"
+													]
+												}
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "[\n  {\n    \"code\": \"<integer>\",\n    \"message\": \"<string>\",\n    \"timestamp\": \"<dateTime>\"\n  }\n]"
+										},
+										{
+											"name": "Deleted emails",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"states\": [\n    3\n  ]\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/v1/emails/search",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"v1",
+														"emails",
+														"search"
+													]
+												}
+											},
+											"_postman_previewlanguage": null,
+											"header": null,
+											"cookie": [],
+											"body": null
+										},
+										{
+											"name": "Date range",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"creationDateFrom\": \"2019-01-01\",\n  \"creationDateTo\": \"2019-01-02\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/v1/emails/search",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"v1",
+														"emails",
+														"search"
+													]
+												}
+											},
+											"_postman_previewlanguage": null,
+											"header": null,
+											"cookie": [],
+											"body": null
+										},
+										{
+											"name": "No filters",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/v1/emails/search",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"v1",
+														"emails",
+														"search"
+													]
+												}
+											},
+											"_postman_previewlanguage": null,
+											"header": null,
+											"cookie": [],
+											"body": null
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "test",
+							"item": [
+								{
+									"name": "Method for test purpouses",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/v1/emails/test",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"v1",
+												"emails",
+												"test"
+											]
+										},
+										"description": "For API availability testing purposes only.<br>The method always returns true."
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Create new emails",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "[\n  {\n    \"emailId\": \"<integer>\",\n    \"emailFrom\": \"<string>\",\n    \"emailSubject\": \"<string>\",\n    \"emailTo\": [\n      {\n        \"email\": \"<string>\"\n      },\n      {\n        \"email\": \"<string>\"\n      }\n    ],\n    \"emailCC\": [\n      {\n        \"email\": \"<string>\"\n      },\n      {\n        \"email\": \"<string>\"\n      }\n    ],\n    \"emailBCC\": [\n      {\n        \"email\": \"<string>\"\n      },\n      {\n        \"email\": \"<string>\"\n      }\n    ],\n    \"emailBody\": \"<string>\",\n    \"emailState\": \"<integer>\"\n  }\n]",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/v1/emails/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"v1",
+										"emails",
+										""
+									]
+								},
+								"description": "Create new emails with the information received."
+							},
+							"response": [
+								{
+									"name": "Emails created successfully.",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "[\n  {\n    \"emailFrom\": \"jclorenzo@mail.com\",\n    \"emailSubject\": \"Hello!!!\",\n    \"emailTo\": [\n      {\n        \"email\": \"pepe@mail.com\"\n      },\n      {\n        \"email\": \"anne@mail.com\"\n      }\n    ],\n    \"emailCC\": [\n      {\n        \"email\": \"martin@mail.com\"\n      }\n    ],\n    \"emailBCC\": [\n      {\n        \"email\": \"boss@mail.com\"\n      }\n    ],\n    \"emailBody\": \"Aliquam aliquet mollis blandit. Vivamus ut dui at erat accumsan dapibus. Vivamus imperdiet turpis mauris, vitae vehicula dui tincidunt quis. Phasellus convallis magna lorem, at volutpat risus viverra a.\",\n    \"emailState\": \"1\"\n  },\n  {\n    \"emailFrom\": \"anne@mail.com\",\n    \"emailSubject\": \"Nullam finibus lectus in dolor interdum venenatis.\",\n    \"emailTo\": [\n      {\n        \"email\": \"pepe@mail.com\"\n      }\n    ],\n    \"emailBody\": \"Nunc eget massa a sem posuere rutrum vel et leo. Aliquam erat volutpat. In sit amet ex velit. Nullam sit amet ipsum lacinia, porta neque eu, bibendum odio.\"\n  }\n]",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/v1/emails/",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"v1",
+												"emails",
+												""
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "[\n  {\n    \"emailId\": \"<integer>\",\n    \"emailFrom\": \"<string>\",\n    \"emailSubject\": \"<string>\",\n    \"emailTo\": [\n      {\n        \"email\": \"<string>\"\n      },\n      {\n        \"email\": \"<string>\"\n      }\n    ],\n    \"emailCC\": [\n      {\n        \"email\": \"<string>\"\n      },\n      {\n        \"email\": \"<string>\"\n      }\n    ],\n    \"emailBCC\": [\n      {\n        \"email\": \"<string>\"\n      },\n      {\n        \"email\": \"<string>\"\n      }\n    ],\n    \"emailBody\": \"<string>\",\n    \"emailState\": \"<integer>\"\n  }\n]"
+								},
+								{
+									"name": "Wrong or illegal email content.",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "[\n  {\n    \"emailId\": 99,\n    \"emailFrom\": \"jclorenzo@mail.com\",\n    \"emailSubject\": \"Hello!!!\",\n    \"emailTo\": [\n      {\n        \"email\": \"pepe@mail.com\"\n      },\n      {\n        \"email\": \"anne@mail.com\"\n      }\n    ],\n    \"emailCC\": [\n      {\n        \"email\": \"martin@mail.com\"\n      }\n    ],\n    \"emailBCC\": [\n      {\n        \"email\": \"boss@mail.com\"\n      }\n    ],\n    \"emailBody\": \"Aliquam aliquet mollis blandit. Vivamus ut dui at erat accumsan dapibus. Vivamus imperdiet turpis mauris, vitae vehicula dui tincidunt quis. Phasellus convallis magna lorem, at volutpat risus viverra a.\",\n    \"emailState\": \"1\"\n  }\n]",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/v1/emails/",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"v1",
+												"emails",
+												""
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"timestamp\": \"<dateTime>\"\n}"
+								}
+							]
+						}
+					]
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:8080/api"
+		}
+	]
+}
